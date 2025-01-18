@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import Image from 'next/image';
+
 import Link from "next/link";
 // Import react scroll
 import { Link as LinkScroll } from "react-scroll";
 import ButtonOutline from "../misc/ButtonOutline.";
-import LogoVPN from "../../public/assets/Logo.svg";
+import LogoVPN from "../../public/assets/Logo.png";
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState(null);
@@ -23,7 +25,13 @@ const Header = () => {
       >
         <nav className="max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto grid grid-flow-col py-3 sm:py-4">
           <div className="col-start-1 col-end-2 flex items-center">
-            <LogoVPN className="h-8 w-auto" />
+            <Image
+              src={LogoVPN}
+              alt="Logo"
+              width={200}
+              height={40}
+              className="w-[120px] md:w-[150px] lg:w-[200px] object-contain"  // Responsive widths
+            />
           </div>
           <ul className="hidden lg:flex col-start-4 col-end-8 text-black-500  items-center">
             <LinkScroll
@@ -42,7 +50,7 @@ const Header = () => {
                   : " text-black-500 hover:text-orange-500 a")
               }
             >
-              About
+              หน้าหลัก
             </LinkScroll>
             <LinkScroll
               activeClass="active"
@@ -60,7 +68,7 @@ const Header = () => {
                   : " text-black-500 hover:text-orange-500 ")
               }
             >
-              Feature
+              ฟังก์ชัน
             </LinkScroll>
             <LinkScroll
               activeClass="active"
@@ -78,7 +86,7 @@ const Header = () => {
                   : " text-black-500 hover:text-orange-500 ")
               }
             >
-              Pricing
+              แพ็กเกจ
             </LinkScroll>
             <LinkScroll
               activeClass="active"
@@ -96,16 +104,22 @@ const Header = () => {
                   : " text-black-500 hover:text-orange-500 ")
               }
             >
-              Testimonial
+              ติดต่อเรา
             </LinkScroll>
           </ul>
           <div className="col-start-10 col-end-12 font-medium flex justify-end items-center">
-            <Link href="/">
+            <Link href="/register">
               <a className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide hover:text-orange-500 transition-all">
-                  Sign In
+                เริ่มต้นใช้งานฟรี 90 วัน
               </a>
             </Link>
-            <ButtonOutline>Sign Up</ButtonOutline>
+            <Link
+              href="/login"
+              className="px-4 py-2 border border-current rounded-md text-gray-600 hover:text-gray-800 hover:border-gray-800 transition-colors"
+            >
+              เข้าสู่ระบบ
+            </Link>
+
           </div>
         </nav>
       </header>

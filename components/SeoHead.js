@@ -93,7 +93,7 @@ const SeoHead = (props) => {
         content='/favicon/ms-icon-144x144.png'
       />
       {/* Accent color on supported browser */}
-      <meta name='theme-color' content='#F53838' />
+      <meta name='theme-color' content='##67aac3' />
     </Head>
   );
 };
