@@ -28,9 +28,9 @@ const Header = () => {
             <Image
               src={LogoVPN}
               alt="Logo"
-              width={200}
-              height={40}
-              className="w-[120px] md:w-[150px] lg:w-[200px] object-contain"  // Responsive widths
+              width={100}
+              height={20}
+              // className="w-[120px] md:w-[150px] lg:w-[200px] object-contain"  // Responsive widths
             />
           </div>
           <ul className="hidden lg:flex col-start-4 col-end-8 text-black-500  items-center">
@@ -109,14 +109,14 @@ const Header = () => {
           </ul>
           <div className="col-start-10 col-end-12 font-medium flex justify-end items-center">
             <Link href="/register">
-              <a className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide hover:text-orange-500 transition-all">
+              {/* <a className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide hover:text-orange-500 transition-all"> */}
                 เริ่มต้นใช้งานฟรี 90 วัน
-              </a>
+              {/* </a> */}
             </Link>
             <Link
               href="/login"
-              className="px-4 py-2 border border-current rounded-md text-gray-600 hover:text-gray-800 hover:border-gray-800 transition-colors"
-            >
+              className="px-4 py-2 border border-current rounded-md text-gray-600 hover:text-gray-800 hover:border-gray-800 transition-colors ml-5"
+            > 
               เข้าสู่ระบบ
             </Link>
 
