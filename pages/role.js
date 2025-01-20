@@ -10,9 +10,7 @@ const RoleSelection = () => {
       <div className="w-full max-w-7xl px-4 py-8">
         <div className="grid md:grid-cols-2 gap-8">
           
-          {/* Owner Card */}
           <div className="bg-white rounded-lg overflow-hidden shadow-lg">
-            {/* Header */}
             <div className="bg-[#586576] p-6 flex items-center justify-between">
               <div>
                 <h2 className="text-[#FFD700] text-lg font-semibold">สำหรับ</h2>
@@ -27,7 +25,6 @@ const RoleSelection = () => {
               />
             </div>
 
-            {/* Stats */}
             <div className="p-6">
               <div className="space-y-4">
                 <div className="flex items-center text-gray-600">
@@ -48,7 +45,6 @@ const RoleSelection = () => {
                 </div>
               </div>
 
-              {/* Action Buttons */}
               <div className="mt-6 flex flex-wrap gap-2">
                 <button className="flex items-center px-4 py-2 bg-[#FF9800] text-white rounded-md">
                   <Building className="w-4 h-4 mr-2" />
@@ -64,7 +60,6 @@ const RoleSelection = () => {
                 </button>
               </div>
 
-              {/* Add New Button */}
               <button className="w-full mt-6 bg-[#4CAF50] text-white py-3 rounded-md flex items-center justify-center"> 
                 <Plus className="w-5 h-5 mr-2" />
                 เพิ่มตึกใหม่
@@ -72,9 +67,7 @@ const RoleSelection = () => {
             </div>
           </div>
 
-          {/* Tenant Card */}
           <div className="bg-white rounded-lg overflow-hidden shadow-lg">
-            {/* Header */}
             <div className="bg-[#586576] p-6 flex items-center justify-between">
               <div>
                 <h2 className="text-[#FFD700] text-lg font-semibold">สำหรับ</h2>
@@ -89,14 +82,12 @@ const RoleSelection = () => {
               />
             </div>
 
-            {/* Content */}
             <div className="p-6">
               <div className="text-gray-600 mb-6">
                 <span>ที่อยู่</span>
                 <div className="border-b border-gray-300 mt-1"></div>
               </div>
 
-              {/* Action Buttons */}
               <div className="flex flex-wrap gap-2 mb-6">
                 <button className="flex items-center px-4 py-2 bg-[#9E9E9E] text-white rounded-md">
                   <FileText className="w-4 h-4 mr-2" />
@@ -112,7 +103,6 @@ const RoleSelection = () => {
                 </button>
               </div>
 
-              {/* Join Button */}
               <button className="w-full bg-[#4CAF50] text-white py-3 rounded-md flex items-center justify-center">
                 <Plus className="w-5 h-5 mr-2" />
                 เข้าหอพัก
