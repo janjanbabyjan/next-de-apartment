@@ -84,8 +84,7 @@ const Header = () => {
                 (activeLink === "pricing"
                   ? " text-orange-500 animation-active "
                   : " text-black-500 hover:text-orange-500 ")
-              }
-            >
+              }>
               แพ็กเกจ
             </LinkScroll>
             <LinkScroll
@@ -109,9 +108,7 @@ const Header = () => {
           </ul>
           <div className="col-start-10 col-end-12 font-medium flex justify-end items-center">
             <Link href="/register">
-              {/* <a className="text-black-600 mx-2 sm:mx-4 capitalize tracking-wide hover:text-orange-500 transition-all"> */}
                 เริ่มต้นใช้งานฟรี 90 วัน
-              {/* </a> */}
             </Link>
             <Link
               href="/login"
@@ -123,7 +120,6 @@ const Header = () => {
           </div>
         </nav>
       </header>
-      {/* Mobile Navigation */}
 
       <nav className="fixed lg:hidden bottom-0 left-0 right-0 z-20 px-4 sm:px-8 shadow-t ">
         <div className="bg-white-500 sm:px-3">
@@ -259,7 +255,6 @@ const Header = () => {
           </ul>
         </div>
       </nav>
-      {/* End Mobile Navigation */}
     </>
   );
 };

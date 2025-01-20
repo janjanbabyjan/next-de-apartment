@@ -9,12 +9,20 @@ import { cn } from "@heroui/react";
 import { AcmeIcon } from "./acme";
 import { sectionItemsWithTeams } from "./sidebar-items";
 import Sidebar from "./sidebar";
+import { LogOut } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function Component({ children, title = "Overview" }) {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const isCompact = isCollapsed || isMobile;
+
+  const router = useRouter();
+
+  const handleLogout = () => {
+    router.push('/');
+  };
 
   const onToggle = React.useCallback(() => {
     setIsCollapsed((prev) => !prev);
@@ -164,7 +172,7 @@ export default function Component({ children, title = "Overview" }) {
             <div className="flex items-center gap-3">
               <div className="text-right">
                 <div className="text-sm font-medium">John Doe</div>
-                
+
               </div>
               <Avatar
                 isBordered
@@ -172,16 +180,18 @@ export default function Component({ children, title = "Overview" }) {
                 src="https://i.pravatar.cc/150?u=a04258114e29026708c"
               />
               <Button
-                isIconOnly
+                onClick={handleLogout}
                 size="sm"
                 variant="light"
+                className="p-2"
               >
-                
-                <Icon
+                <LogOut className="w-5 h-5 text-[#000000]" />
+
+                {/* <Icon
                   className="text-default-500"
                   icon="solar:logout-3-outline"
                   width={20}
-                />
+                /> */}
               </Button>
             </div>
           </div>
