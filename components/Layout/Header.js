@@ -84,8 +84,7 @@ const Header = () => {
                 (activeLink === "pricing"
                   ? " text-orange-500 animation-active "
                   : " text-black-500 hover:text-orange-500 ")
-              }
-            >
+              }>
               แพ็กเกจ
             </LinkScroll>
             <LinkScroll
