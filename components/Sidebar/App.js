@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import { Avatar, Button, ScrollShadow, Spacer, Tooltip } from "@heroui/react";
+import { Avatar, Button, ScrollShadow, Spacer, Tooltip } from "@heroui/react"
 import { Icon } from "@iconify/react";
 import { useMediaQuery } from "usehooks-ts";
-import { cn } from "@heroui/react";
+import { cn } from "@heroui/react"
 
 import { AcmeIcon } from "./acme";
 import { sectionItemsWithTeams } from "./sidebar-items";
