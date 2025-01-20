@@ -1,26 +1,70 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import Header from '../components/Layout/Header';
 
 const Login = () => {
+  const router = useRouter();
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     phone: '',
     password: '',
   });
 
-  const handleSubmit = (e) => {
+  const mockUsers = [
+    {
+      phone: '0812345678',
+      password: 'password123',
+      role: 'เจ้าของหอพัก'
+    },
+    {
+      phone: '0823456789',
+      password: 'password123',
+      role: 'ผู้เช่า'
+    }
+  ];
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add login logic here
+    setError('');
+    setLoading(true);
+
+    try {
+      if (!formData.phone || !formData.password) {
+        throw new Error('กรุณากรอกข้อมูลให้ครบถ้วน');
+      }
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      const user = mockUsers.find(user => user.phone === formData.phone);
+      if (!user) {
+        throw new Error('ไม่พบบัญชีผู้ใช้นี้');
+      }
+      if (user.password !== formData.password) {
+        throw new Error('รหัสผ่านไม่ถูกต้อง');
+      }
+
+      console.log('Login successful:', user);
+
+      switch (user.role) {
+        case 'เจ้าของหอพัก':
+          router.push('/owner');
+          break;
+        case 'ผู้เช่า':
+          router.push('/tenant');
+          break;
+      }
+
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    // <Header
-
-    // >
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="max-w-7xl w-full p-6 flex gap-8">
-        {/* Left side - Logo and branding */}
         <div className="w-1/2 flex flex-col items-center justify-center">
           <div className="text-center">
             <Image
@@ -35,10 +79,16 @@ const Login = () => {
           </div>
         </div>
 
-        {/* Right side - Login form */}
         <div className="w-1/2">
           <div className="bg-white p-8 rounded-lg shadow-md">
             <h3 className="text-2xl font-bold mb-6 text-center">เข้าสู่ระบบ</h3>
+            
+            {error && (
+              <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+                {error}
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <input
@@ -63,16 +113,22 @@ const Login = () => {
               </div>
 
               <div className="flex items-center justify-end">
-                <Link href="/forgot-password" className="text-sm text-blue-600 hover:text-blue-500">
+                <Link 
+                  href="/forgot-password" 
+                  className="text-sm text-blue-600 hover:text-blue-500"
+                >
                   ลืมรหัสผ่าน ?
                 </Link>
               </div>
 
               <button
                 type="submit"
-                className="w-full py-2 px-4 bg-[#6FB2D2] hover:bg-[#5DA1C1] text-white font-semibold rounded-md transition duration-200 ease-in-out"
+                disabled={loading}
+                className={`w-full py-2 px-4 bg-[#6FB2D2] hover:bg-[#5DA1C1] text-white font-semibold rounded-md transition duration-200 ease-in-out ${
+                  loading ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
               >
-                LOG IN
+                {loading ? 'กำลังเข้าสู่ระบบ...' : 'LOG IN'}
               </button>
 
               <div className="text-center mt-4">
@@ -86,11 +142,18 @@ const Login = () => {
                 สมัครสมาชิก
               </Link>
             </form>
+
+            <div className="mt-8 p-4 bg-gray-50 rounded-md">
+              <p className="text-sm text-gray-500 mb-2">ข้อมูลทดสอบ:</p>
+              <ul className="text-sm text-gray-600 space-y-1">
+                <li>เจ้าของ: 0812345678 / password123</li>
+                <li>ผู้เช่า: 0823456789 / password123</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    // </Header>
   );
 };
 
