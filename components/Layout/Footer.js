@@ -7,14 +7,12 @@ import Instagram from "../../public/assets/Icon/instagram.svg";
 
 const Footer = () => {
   return (
-    <div className="bg-white-300 pt-40 pb-24">
+    <div className="bg-white-300 pt-40 pb-24" id="testimoni">
       <div className="max-w-screen-xl w-full mx-auto px-6 sm:px-8 lg:px-16 grid grid-rows-6 sm:grid-rows-1 grid-flow-row sm:grid-flow-col grid-cols-3 sm:grid-cols-12 gap-4">
         <div className="row-span-2 sm:col-span-4 col-start-1 col-end-4 sm:col-end-5 flex flex-col items-start ">
-        <img src="/assets/kkbs.png" alt="KKBS Logo" className="h-20 w-auto mb-6" />
+          <img src="/assets/Logo.png" alt="KKBS Logo" className="h-20 w-auto mb-6" />
           <p className="mb-4">
-            <strong className="font-medium">KKBS</strong> Business Administration Program in Digital Entrepreneur and
-
-Marketing Technology
+            <strong className="font-medium">LinkCo.</strong> ระบบจัดการหอพัก อพาร์ทเมนท์ที่ช่วยให้เจ้าของหอพักบริหารจัดการค่าใช้จ่ายและดูแลผู้เช่าได้อย่างมีประสิทธิภาพ
           </p>
           {/* <div className="flex w-full mt-2 mb-8 -mx-2">
             <div className="mx-2 bg-white-500 rounded-full items-center justify-center flex p-2 shadow-md">
@@ -59,22 +57,22 @@ Marketing Technology
               LinkCo คืออะไร ?{" "}
             </li>
             <li className="my-2 hover:text-orange-500 cursor-pointer transition-all">
-            คู่มือการใช้งาน{" "}
+              คู่มือการใช้งาน{" "}
             </li>
             <li className="my-2 hover:text-orange-500 cursor-pointer transition-all">
-            ติดต่อฝ่ายช่วยเหลือ{" "}
+              ติดต่อฝ่ายช่วยเหลือ{" "}
             </li>
-            
+
           </ul>
         </div>
         <div className="row-span-2 sm:col-span-2 sm:col-start-11 sm:col-end-13 flex flex-col">
-          <p className="text-black-600 mb-4 font-medium text-lg">ติดต่อเราy</p>
+          <p className="text-black-600 mb-4 font-medium text-lg">ติดต่อเรา</p>
           <ul className="text-black-500">
             <li className="my-2 hover:text-orange-500 cursor-pointer transition-all">
-            support@linkco.com{" "}
+              support@linkco.com{" "}
             </li>
             <li className="my-2 hover:text-orange-500 cursor-pointer transition-all">
-            ขอนแก่น, ประเทศไทย{" "}
+              ขอนแก่น, ประเทศไทย{" "}
             </li>
           </ul>
         </div>

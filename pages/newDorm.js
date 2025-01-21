@@ -1,29 +1,42 @@
 import React, { useState } from 'react';
 import { Plus } from 'lucide-react';
+import { useRouter } from 'next/router';
 
 const DormitoryForm = () => {
+  const router = useRouter();
   const [activeStep, setActiveStep] = useState(1);
+  
+  // Mock data initialization
   const [formData, setFormData] = useState({
-    dormitoryName: '',
-    phoneNumber: '',
-    email: '',
-    businessType: '',
-    billDate: '',
-    paymentDueDate: '',
-    totalRooms: ''
+    dormitoryName: 'หอพักตัวอย่าง',
+    phoneNumber: '0812345678',
+    email: 'example@dormitory.com',
+    businessType: 'personal',
+    billDate: '1',
+    paymentDueDate: '5',
+    totalRooms: '4'
   });
+
+  const handleSave = () => {
+    // Here you could add validation if needed
+    console.log('Saving form data:', formData);
+    // Navigate to /owner after saving
+    router.push('/owner');
+  };
+
+  const handleCancel = () => {
+    // Navigate back to /owner
+    router.push('/owner');
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4">
-        {/* Steps */}
         <div className="flex justify-center mb-8 relative">
           <div className="w-full max-w-2xl flex justify-between relative">
-            {/* Progress line */}
             <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-200 -translate-y-1/2" />
             <div className={`absolute top-1/2 left-0 h-0.5 bg-[#6FB2D2] -translate-y-1/2 transition-all duration-300 ${activeStep === 1 ? 'w-0' : activeStep === 2 ? 'w-full' : ''}`} />
             
-            {/* Step 1 */}
             <div className="relative">
               <div className={`w-10 h-10 rounded-full flex items-center justify-center text-lg font-semibold ${activeStep >= 1 ? 'bg-[#6FB2D2] text-white' : 'bg-gray-200 text-gray-500'}`}>
                 1
@@ -33,7 +46,6 @@ const DormitoryForm = () => {
               </div>
             </div>
 
-            {/* Step 2 */}
             <div className="relative">
               <div className={`w-10 h-10 rounded-full flex items-center justify-center text-lg font-semibold ${activeStep >= 2 ? 'bg-[#6FB2D2] text-white' : 'bg-gray-200 text-gray-500'}`}>
                 2
@@ -45,11 +57,9 @@ const DormitoryForm = () => {
           </div>
         </div>
 
-        {/* Form */}
         <div className="bg-white rounded-lg shadow-md p-6 mt-12">
           {activeStep === 1 && (
             <div className="space-y-6">
-              {/* Dormitory Name */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   ชื่อหอพัก <span className="text-red-500">*</span>
@@ -63,7 +73,6 @@ const DormitoryForm = () => {
                 />
               </div>
 
-              {/* Phone Number */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   เบอร์โทรติดต่อหอพัก <span className="text-red-500">*</span>
@@ -76,13 +85,15 @@ const DormitoryForm = () => {
                     value={formData.phoneNumber}
                     onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
                   />
-                  <button className="px-4 py-2 bg-[#6FB2D2] text-white rounded-md hover:bg-[#5DA1C1] transition-colors">
+                  <button 
+                    type="button"
+                    className="px-4 py-2 bg-[#6FB2D2] text-white rounded-md hover:bg-[#5DA1C1] transition-colors"
+                  >
                     + เพิ่มเบอร์โทรศัพท์
                   </button>
                 </div>
               </div>
 
-              {/* Email */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   อีเมลติดต่อหอพัก
@@ -96,7 +107,6 @@ const DormitoryForm = () => {
                 />
               </div>
 
-              {/* Business Type */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   ประเภทธุรกิจ <span className="text-red-500">*</span>
@@ -112,7 +122,6 @@ const DormitoryForm = () => {
                 </select>
               </div>
 
-              {/* Bill Date and Payment Due Date */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -140,7 +149,6 @@ const DormitoryForm = () => {
                 </div>
               </div>
 
-              {/* Total Rooms */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   จำนวนชั้น/ชั้นที่ห้อง
@@ -156,14 +164,17 @@ const DormitoryForm = () => {
             </div>
           )}
 
-          {/* Buttons */}
           <div className="flex justify-end gap-4 mt-8">
             <button
+              type="button"
+              onClick={handleCancel}
               className="px-6 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"
             >
               ยกเลิก
             </button>
             <button
+              type="button"
+              onClick={handleSave}
               className="px-6 py-2 bg-[#4CAF50] text-white rounded-md hover:bg-[#388E3C] transition-colors"
             >
               บันทึก
