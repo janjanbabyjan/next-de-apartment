@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from "react";
 import Image from 'next/image';
-
 import Link from "next/link";
-// Import react scroll
+import { useRouter } from "next/router";
 import { Link as LinkScroll } from "react-scroll";
-import ButtonOutline from "../misc/ButtonOutline.";
 import LogoVPN from "../../public/assets/Logo.png";
 
 const Header = () => {
+  const router = useRouter();
   const [activeLink, setActiveLink] = useState(null);
   const [scrollActive, setScrollActive] = useState(false);
+
+  const handleLogoClick = () => {
+    router.push('/');
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       setScrollActive(window.scrollY > 20);
     });
   }, []);
+
   return (
     <>
       <header
@@ -24,13 +29,16 @@ const Header = () => {
         }
       >
         <nav className="max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto grid grid-flow-col py-3 sm:py-4">
-          <div className="col-start-1 col-end-2 flex items-center">
+          <div
+            onClick={handleLogoClick}
+            className="cursor-pointer"
+          >
             <Image
               src={LogoVPN}
-              alt="Logo"
+              alt="Logo VPN"
               width={100}
               height={20}
-              // className="w-[120px] md:w-[150px] lg:w-[200px] object-contain"  // Responsive widths
+              className="object-contain"
             />
           </div>
           <ul className="hidden lg:flex col-start-4 col-end-8 text-black-500  items-center">
@@ -54,24 +62,6 @@ const Header = () => {
             </LinkScroll>
             <LinkScroll
               activeClass="active"
-              to="feature"
-              spy={true}
-              smooth={true}
-              duration={1000}
-              onSetActive={() => {
-                setActiveLink("feature");
-              }}
-              className={
-                "px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative" +
-                (activeLink === "feature"
-                  ? " text-orange-500 animation-active "
-                  : " text-black-500 hover:text-orange-500 ")
-              }
-            >
-              ฟังก์ชัน
-            </LinkScroll>
-            <LinkScroll
-              activeClass="active"
               to="pricing"
               spy={true}
               smooth={true}
@@ -84,7 +74,26 @@ const Header = () => {
                 (activeLink === "pricing"
                   ? " text-orange-500 animation-active "
                   : " text-black-500 hover:text-orange-500 ")
-              }>
+              }
+            >
+              ฟังก์ชัน
+            </LinkScroll>
+            <LinkScroll
+              activeClass="active"
+              to="pricings"
+              spy={true}
+              smooth={true}
+              duration={1000}
+              onSetActive={() => {
+                setActiveLink("pricings");
+              }}
+              className={
+                "px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative" +
+                (activeLink === "pricings"
+                  ? " text-orange-500 animation-active "
+                  : " text-black-500 hover:text-orange-500 ")
+              }
+            >
               แพ็กเกจ
             </LinkScroll>
             <LinkScroll
@@ -108,15 +117,14 @@ const Header = () => {
           </ul>
           <div className="col-start-10 col-end-12 font-medium flex justify-end items-center">
             <Link href="/register">
-                เริ่มต้นใช้งานฟรี 90 วัน
+              เริ่มต้นใช้งานฟรี 90 วัน
             </Link>
             <Link
               href="/login"
               className="px-4 py-2 border border-current rounded-md text-gray-600 hover:text-gray-800 hover:border-gray-800 transition-colors ml-5"
-            > 
+            >
               เข้าสู่ระบบ
             </Link>
-
           </div>
         </nav>
       </header>
@@ -155,38 +163,6 @@ const Header = () => {
                 />
               </svg>
               About
-            </LinkScroll>
-            <LinkScroll
-              activeClass="active"
-              to="feature"
-              spy={true}
-              smooth={true}
-              duration={1000}
-              onSetActive={() => {
-                setActiveLink("feature");
-              }}
-              className={
-                "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all " +
-                (activeLink === "feature"
-                  ? "  border-orange-500 text-orange-500"
-                  : " border-transparent ")
-              }
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                />
-              </svg>
-              Feature
             </LinkScroll>
             <LinkScroll
               activeClass="active"

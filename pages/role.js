@@ -1,10 +1,16 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Header from '../components/Layout/Header';
+import { useRouter } from 'next/router';
 import { Building, Plus, FileText, BellRing, MessageCircle, DollarSign, Users } from 'lucide-react';
 
 const RoleSelection = () => {
+  const router = useRouter();
+
+  const handleAddLayer = () => {
+    router.push('/newDorm');
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="w-full max-w-7xl px-4 py-8">
@@ -60,7 +66,10 @@ const RoleSelection = () => {
                 </button>
               </div>
 
-              <button className="w-full mt-6 bg-[#4CAF50] text-white py-3 rounded-md flex items-center justify-center"> 
+              <button 
+                onClick={handleAddLayer} 
+                className="w-full mt-6 bg-[#4CAF50] text-white py-3 rounded-md flex items-center justify-center"
+              > 
                 <Plus className="w-5 h-5 mr-2" />
                 เพิ่มตึกใหม่
               </button>

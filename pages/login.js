@@ -48,10 +48,10 @@ const Login = () => {
 
       switch (user.role) {
         case 'เจ้าของหอพัก':
-          router.push('/owner');
+          router.push('/role');
           break;
         case 'ผู้เช่า':
-          router.push('/tenant');
+          router.push('/role');
           break;
       }
 
